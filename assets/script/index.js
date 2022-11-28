@@ -5,3 +5,7 @@
 
     Fakebook
 */
+
+import {User} from './User.js';
+import {Subscriber} from './Subscriber';
+import { select, onEvent } from './util.js';
