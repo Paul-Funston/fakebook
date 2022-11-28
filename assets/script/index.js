@@ -18,13 +18,33 @@ const pages = [];
 const groups = [];
 const canMonetize = true;
 
-const paul = new Subscriber(id, 'Paul Funston', userName, email, pages, groups, canMonetize);
+const activeProfile = new Subscriber(id, 'Paul Funston', userName, email, pages, groups, canMonetize);
+const avatarURL = '';
+
+const newPostText = select('textarea');
+const newPostImg = select('.post-img');
+const newPostBtn = select('.post-btn');
+const feed = select('.feed');
+console.log(newPostImg.files);
+
+
+onEvent('click', newPostBtn, () => {
+  if (validateForm()) {
+    createPost();
+    clearForm();
+  }
+  
+});
 
 
 function validateForm() {
-  // validate input when submit clicked
-  // createPost();
-  // clearForm();
+  return (newPostText.value.trim() !== '' || newPostImg.files[0] !== undefined)
+
+}
+
+function clearForm() {
+  newPostText.value = '';
+  newPostImg.value = ''; 
 }
 
 
@@ -41,10 +61,28 @@ function createPost() {
 }
 
 function newPostTemplate() {
-  // const newPost =document.createElement('div'); 
+  const newPost = document.createElement('div'); 
+  const postHead = document.createElement('div');
+  const postHeadStart = document.createElement('div');
+  const posterAvatar = document.createElement('div');
+  const poster = document.createElement('p');
+  const postDate = document.createElement('p');
+  const currentDay = new Date();
+
+  newPost.classList.add('post');
+  postHead.classList.add('post-head');
+  postHeadStart.classList.add('post-head-start');
+  posterAvatar.classList.add('avatar');
+  postDate.innerText = currentDay.toDateString();
+  poster.innerText = activeProfile.userName;
+
+  postHeadStart.append(posterAvatar, poster);
+  postHead.append(postHeadStart, postDate);
+  newPost.append(postHead);
 
 
-  // return newPost
+
+  return newPost
 }
 
 function createPostContent() {
