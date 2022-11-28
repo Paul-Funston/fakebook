@@ -1,1 +1,70 @@
 @import "./reset.css";
+
+:root {
+
+  --app-light-bg: 218 224 230;
+  --app-light-acc: 248 249 250;
+  --app-blue: 108 131 206;
+  --app-orange: 211 123 90;
+
+
+  --header-height: 56px;
+  --footer-height: 1rem;
+ }
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*  Default                                                                  */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+p, h1, h2, h3, h4, h5, h6 {
+  color: rgb(40 40 40);
+}
+
+.container {
+  width: min(100% - 30px, 80vw);
+  margin-inline: auto;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*  Header                                                                   */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+header {
+  height: var(--header-height);
+  background-color: rgb(var(--app-light-acc));
+  line-height: var(--header-height);
+}
+
+header .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header ul {
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: rgb(40 40 40);
+  text-decoration: none;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*  Footer                                                                   */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+footer {
+  height: var(--footer-height);
+  background-color: rgb(var(--app-light-acc));
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/*  Main                                                                     */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+main {
+  height: calc(100vh - var(--header-height) - var(--footer-height));
+  background-color: rgb(var(--app-light-bg));
+}

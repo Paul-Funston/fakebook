@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="assets/style/index.css" media="all">
-        <script src="./assets/script/index.js" module></script>
+        <script src="./assets/script/index.js" type="module"></script>
     </head>
     <body>
         <header>
@@ -24,10 +24,15 @@
                     </div>
                     <nav>
                         <ul>
-                            <li></li>
+                            <li><a href="#">Friends</a></li>
+                            <li><a href="#">Pages</a></li>
+                            <li><a href="#">Groups</a></li>
+                            <li><a href="#">My ads</a></li>
+                            <li><a href="#">Settings</a></li>
                         </ul>
                     </nav>
                     <div class="profile">
+                        <div>Avatar</div>
                         <div class="profile-menu"></div>
                     </div>
                 </div>
@@ -35,22 +40,30 @@
         </header>
         <main>
             <div class="container">
-                <form>
-                    <input type="text-area">
-                    <input type="file">
-                    <input type="button">
-                </form>
-                <div class="feed">
-                    <div class="post">
-                        <div class="post-head">
-                            <p>Poster</p>
-                            <p>Date</p>
+                <div class="grid">
+                    <form>
+                        <input type="text" placeholder="What's on your mind?">
+                        <input type="file">
+                        <input type="button" class='post-btn' value="Post">
+                    </form>
+                    <div class="feed subgrid">
+                        <div class="post">
+                            <div class="post-head">
+                                <div class="post-head-start">
+                                    <figure>poster avatar</figure>
+                                    <p>Poster</p>
+                                </div>
+                                <p>Date</p>
+                            </div>
+                            <div class="post-content">
+                            </div>
                         </div>
-                        <div class="post-content"></div>
+    
                     </div>
-
-
+                    
                 </div>
+                
+
 
             </div>
         </main>

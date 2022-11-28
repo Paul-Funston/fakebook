@@ -5,7 +5,7 @@
 
     Subscriber class
 */
-import {User} from './User';
+import {User} from './User.js';
 
 class Subscriber extends User {
   #pages;
@@ -31,9 +31,7 @@ class Subscriber extends User {
     return this.#canMonetize;
   }
 
-  getInfo() {
-    super.getInfo();
-  }
+// getInfo() {};
 }
 
 export{Subscriber};

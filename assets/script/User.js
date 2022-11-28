@@ -35,9 +35,7 @@ class User {
     return this.#email;
   }
 
-  getInfo() {
-    
-  }
+ // getInfo() {}
 
 }
 
