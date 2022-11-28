@@ -26,17 +26,14 @@ const newPostImg = select('.post-img');
 const newPostBtn = select('.post-btn');
 const userAvatar = select('header .avatar')
 const feed = select('.feed');
-console.log(userAvatar);
+let imgData = '';
 
 
 onEvent('click', newPostBtn, () => {
-  if (validateForm()) {
+  if (isFormValid()) {
     createPost();
     clearForm();
   }
-  setAvatar()
-
-  
 });
 
 setAvatar();
@@ -46,7 +43,7 @@ function setAvatar() {
 }
 
 
-function validateForm() {
+function isFormValid() {
   return (newPostText.value.trim() !== '' || newPostImg.value !== '')
 }
 
@@ -80,7 +77,6 @@ function newPostTemplate() {
   posterAvatar.classList.add('avatar');
 
   posterAvatar.style.backgroundImage = avatarURL;
-
   postDate.innerText = currentDay.toDateString();
   poster.innerText = activeProfile.userName;
 
@@ -94,11 +90,11 @@ function newPostTemplate() {
 function createPostContent() {
   const postContent = document.createElement('div');
   const postText = document.createElement('p');
-  const postImg = document.createElement('div');
+  const postImg = document.createElement('figure');
 
   postContent.classList.add('post-content');
   postText.innerText = newPostText.value.trim();
-  postImg.style.backgroundImage = '';
+  getImgData(postImg);
   
   postContent.append(postText, postImg);
 
@@ -110,5 +106,15 @@ function addPostToFeed(newPost) {
 }
 
 
+function getImgData(postImg) {
+  const files = newPostImg.files[0];
+  if (files) {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(files);
+    fileReader.addEventListener("load", function () {
+      postImg.innerHTML = `<img src='${this.result}'>`;
+    });    
+  }
+}
 
 
