@@ -19,13 +19,14 @@ const groups = [];
 const canMonetize = true;
 
 const activeProfile = new Subscriber(id, 'Paul Funston', userName, email, pages, groups, canMonetize);
-const avatarURL = '';
+const avatarURL = 'url(./assets/media/avatar.png)';
 
 const newPostText = select('textarea');
 const newPostImg = select('.post-img');
 const newPostBtn = select('.post-btn');
+const userAvatar = select('header .avatar')
 const feed = select('.feed');
-console.log(newPostImg.files);
+console.log(userAvatar);
 
 
 onEvent('click', newPostBtn, () => {
@@ -33,13 +34,20 @@ onEvent('click', newPostBtn, () => {
     createPost();
     clearForm();
   }
+  setAvatar()
+
   
 });
 
+setAvatar();
+
+function setAvatar() {
+  userAvatar.style.backgroundImage = avatarURL;
+}
+
 
 function validateForm() {
-  return (newPostText.value.trim() !== '' || newPostImg.files[0] !== undefined)
-
+  return (newPostText.value.trim() !== '' || newPostImg.value !== '')
 }
 
 function clearForm() {
@@ -49,15 +57,12 @@ function clearForm() {
 
 
 function createPost() {
+  const newPost = newPostTemplate();
+  const postContent = createPostContent();
+  newPost.append(postContent);
 
-  //const newPost = newPostTemplate();
-  //const postContent = createPostContent();
+  addPostToFeed(newPost);
 
-  // newPost.append(postContent);
-
-  //  Do i want to save all posts in an array and have displayFeed add/create them or prepend to the feed.
-  // feedArray.unshift(newPost);
-  // displayFeed();
 }
 
 function newPostTemplate() {
@@ -73,6 +78,9 @@ function newPostTemplate() {
   postHead.classList.add('post-head');
   postHeadStart.classList.add('post-head-start');
   posterAvatar.classList.add('avatar');
+
+  posterAvatar.style.backgroundImage = avatarURL;
+
   postDate.innerText = currentDay.toDateString();
   poster.innerText = activeProfile.userName;
 
@@ -80,19 +88,25 @@ function newPostTemplate() {
   postHead.append(postHeadStart, postDate);
   newPost.append(postHead);
 
-
-
   return newPost
 }
 
 function createPostContent() {
-  // const postContent = document.createElement('div');
+  const postContent = document.createElement('div');
+  const postText = document.createElement('p');
+  const postImg = document.createElement('div');
 
-  //return postContent
+  postContent.classList.add('post-content');
+  postText.innerText = newPostText.value.trim();
+  postImg.style.backgroundImage = '';
+  
+  postContent.append(postText, postImg);
+
+  return postContent
 }
 
-function displayFeed() {
-
+function addPostToFeed(newPost) {
+  feed.prepend(newPost);
 }
 
 

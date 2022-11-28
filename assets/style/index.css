@@ -51,6 +51,17 @@ nav a {
   text-decoration: none;
 }
 
+.avatar {
+  --app-side: 28px;
+  /* background-image: url(../media/avatar.png); */
+  background-position: center;
+  border-radius: 50%;;
+  height: var(--app-side);
+  width: var(--app-side);
+  cursor: pointer;
+}
+
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /*  Footer                                                                   */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -83,6 +94,7 @@ main .container {
 .subgrid {
   display: grid;
   grid-template-columns: subgrid;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 780px) {
@@ -118,7 +130,7 @@ textarea {
 }
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-/*  Feed                                                                     */
+/*  Posts                                                                    */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 .post-head {
@@ -126,9 +138,14 @@ textarea {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+
 }
 
 .post-head-start {
   display: flex;
   gap: 1rem;
+}
+
+.post-content {
+  padding: 1rem;
 }
