@@ -14,8 +14,8 @@ import { select, onEvent } from './util.js';
 const id = 'RE2347';
 const userName = 'PaulF21';
 const email = 'paulfunston@email.com'
-const pages = [];
-const groups = [];
+const pages = ['Fakebook', 'Top NBA Highlights', ];
+const groups = ['Winnipeg Developers', 'Good Design Fans', 'Board Game Geeks'];
 const canMonetize = true;
 
 const activeProfile = new Subscriber(id, 'Paul Funston', userName, email, pages, groups, canMonetize);
@@ -41,6 +41,8 @@ onEvent('click', profileMenu, closeMenu);
 setAvatar();
 createMenu();
 
+// 
+
 function setAvatar() {
   userAvatar.style.backgroundImage = avatarURL;
 }
@@ -61,7 +63,6 @@ function createPost() {
   newPost.append(postContent);
 
   addPostToFeed(newPost);
-
 }
 
 function newPostTemplate() {
@@ -117,6 +118,8 @@ function getImgData(postImg) {
       postImg.innerHTML = `<img src='${this.result}'>`;
     });    
   }
+
+
 }
 
 
@@ -148,3 +151,11 @@ function createMenu() {
   }) 
 
 }
+
+// onEvent('input', newPostImg, function() {
+//     if (newPostImg.value = '') {
+//       newPostImg.style.color = `rgb(255 255 255)`;
+//     } else {
+//       newPostImg.style.color = `rgb(0 0 0)`;
+//     }
+//   })

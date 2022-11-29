@@ -45,9 +45,25 @@ header ul {
   gap: 1rem;
 }
 
+h1 {
+  color: rgb(var(--app-blue));
+  font-size: 32px;
+  font-weight: 700;
+}
+
 nav a {
   color: rgb(40 40 40);
   text-decoration: none;
+}
+
+nav a:hover {
+  color: rgb(var(--app-blue));
+  font-weight: 600;
+}
+
+.nav-menu {
+  display: none;
+  cursor: pointer;
 }
 
 .avatar {
@@ -60,6 +76,17 @@ nav a {
   cursor: pointer;
 }
 
+@media screen and (max-width: 800px) {
+  nav {
+    display: none;
+  }
+  .nav-menu {
+    display: block;
+  }
+
+
+  
+}
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -115,6 +142,26 @@ textarea {
   resize: none;
 }
 
+input {
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+input[type="button"] {
+  background-color: rgb(var(--app-orange));
+  border: 1px solid rgb(var(--app-orange)); 
+  width: 30%;
+}
+
+input[type="button"]:hover {
+  background-color: rgb(var(--app-orange) / 0.5);
+}
+
+input[type="file"] {
+  /* color: rgb( 255 255 255 ); */
+}
+
 .form-flex {
   display: flex;
   justify-content: space-between;
@@ -159,7 +206,9 @@ textarea {
 
 .profile-menu {
   position: absolute;
-  inset: 0 0 0 auto;
+  padding: 1rem 0;
+  inset: 0 0 0  auto;
+  max-width: 33vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -173,6 +222,11 @@ textarea {
   text-align: center;
   background-color: rgb(255 255 255);
   cursor: pointer;
-
+  border: 1px solid rgb( 0 0 0 / 0);
 }
+.profile-menu > *:hover {
+  border: 1px solid rgb(40 40 40);
+}
+
+
 
