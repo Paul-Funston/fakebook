@@ -35,8 +35,16 @@ class User {
     return this.#email;
   }
 
- // getInfo() {}
+ getInfo() {
+  return [
+    this.#id,
+    this.#name,
+    this.#userName,
+    this.#email,
+  ]
+ }
 
 }
 
 export {User};
+

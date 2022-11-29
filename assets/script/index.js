@@ -26,7 +26,7 @@ const newPostImg = select('.post-img');
 const newPostBtn = select('.post-btn');
 const userAvatar = select('header .avatar')
 const feed = select('.feed');
-let imgData = '';
+const profileMenu = select('.profile-menu-modal');
 
 
 onEvent('click', newPostBtn, () => {
@@ -36,12 +36,14 @@ onEvent('click', newPostBtn, () => {
   }
 });
 
+onEvent('click', userAvatar, openMenu);
+onEvent('click', profileMenu, closeMenu);
 setAvatar();
+createMenu();
 
 function setAvatar() {
   userAvatar.style.backgroundImage = avatarURL;
 }
-
 
 function isFormValid() {
   return (newPostText.value.trim() !== '' || newPostImg.value !== '')
@@ -118,3 +120,31 @@ function getImgData(postImg) {
 }
 
 
+function openMenu() {
+  profileMenu.style.visibility = 'visible';
+}
+
+function closeMenu() {
+  profileMenu.style.visibility = 'hidden';
+}
+
+function createMenu() {
+  let dataArray = activeProfile.getInfo();
+  console.log(dataArray);
+
+  dataArray.forEach(data => {
+    const menu = select(`.profile-menu`);
+    let item = document.createElement('div');
+    if (data instanceof Array) {
+      console.log(data);
+      item.innerHTML = `<p>${data.join(', ')}</p>`;
+    } else {
+      console.log(data);
+      item.innerHTML = `<p>${data.toString()}</p>`;
+    }
+
+    menu.append(item);
+
+  }) 
+
+}

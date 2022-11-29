@@ -31,7 +31,15 @@ class Subscriber extends User {
     return this.#canMonetize;
   }
 
-// getInfo() {};
+  getInfo() {
+    let array = super.getInfo();
+     array.push(
+      this.#pages,
+      this.#groups,
+      this.#canMonetize,
+     )
+     return array
+  };
 }
 
 export{Subscriber};
